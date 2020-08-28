@@ -9,8 +9,8 @@ from dash.exceptions import PreventUpdate
 
 # Load the old data from the CSV hosted on Google Sheets
 #data_source = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTV3EJy6TjvTnubFu_yZhDkRrdCjumzBIePB9zVFD5MslNF96Z7SJFkkBbyGsZciFrVXjdXBI8ckgOE/pub?gid=0&single=true&output=csv'
-data = pd.read_csv('dmf_data.csv')
-#print("old data loaded", len(old_data))
+data = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTV3EJy6TjvTnubFu_yZhDkRrdCjumzBIePB9zVFD5MslNF96Z7SJFkkBbyGsZciFrVXjdXBI8ckgOE/pub?gid=0&single=true&output=csv')
+print("old data loaded")
 data.drop (['dmf_submit_date'], axis = 1, inplace = True)
 
 # rename column names
@@ -19,7 +19,7 @@ data.columns = new_columns
 print(data.head())
 # initiate app
 app = dash.Dash(__name__)
-server = app.server
+#server = app.server
 
 #function to create dropdown - a dictionary with labels and values
 def get_options(long_list):
@@ -61,4 +61,4 @@ def callback_func(searched_query):
     return child
 
 if __name__ == '__main__':
-    app.run_server(debug = False)
+    app.run_server(debug = True)
