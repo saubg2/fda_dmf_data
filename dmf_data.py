@@ -49,7 +49,7 @@ app.layout = html.Div(style={'padding-top':15},children=[
 def callback_func(searched_query):
     if searched_query is None:
         raise PreventUpdate
-    filtered_data = data[data.Drug.str.match(searched_query)]
+    filtered_data = data[data.Drug.str.match(searched_query.str.upper())]
     child = html.Div(children= [dash_table.DataTable(
         data=filtered_data.to_dict('records'),
         columns = [{'id':c,'name':c} for c in filtered_data.columns],
