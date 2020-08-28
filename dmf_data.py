@@ -19,7 +19,7 @@ data.columns = new_columns
 print(data.head())
 # initiate app
 app = dash.Dash(__name__)
-#server = app.server
+server = app.server
 
 #function to create dropdown - a dictionary with labels and values
 def get_options(long_list):
@@ -61,4 +61,4 @@ def callback_func(searched_query):
     return child
 
 if __name__ == '__main__':
-    app.run_server(debug = True)
+    app.run_server(debug = False)
